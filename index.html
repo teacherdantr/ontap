@@ -1,0 +1,588 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Ôn Tập Trực Tuyến - Lớp 6, 7 & 8</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            transition: all 0.2s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .qr-code canvas {
+            margin: 0 auto;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 8px;
+        }
+        .tab-active {
+            color: #1e40af;
+            font-weight: 700;
+            border-bottom: 4px solid #1e40af;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-blue-700 text-white py-6 px-4 shadow-md">
+            <div class="container mx-auto">
+                <h1 class="text-3xl font-bold text-center">Bài Ôn Tập Trực Tuyến</h1>
+                <p class="text-center mt-2 text-blue-100">Tổng hợp các bài ôn tập dành cho học sinh lớp 6, 7 và 8</p>
+            </div>
+        </header>
+
+        <!-- Tabs -->
+        <div class="bg-white shadow-sm sticky top-0 z-10">
+            <div class="container mx-auto">
+                <div class="flex justify-center">
+                    <button id="tab-grade6" class="tab-active px-5 py-4 text-lg font-medium focus:outline-none">
+                        Lớp 6
+                    </button>
+                    <button id="tab-grade7" class="px-5 py-4 text-lg font-medium text-gray-600 focus:outline-none">
+                        Lớp 7
+                    </button>
+                    <button id="tab-grade8" class="px-5 py-4 text-lg font-medium text-gray-600 focus:outline-none">
+                        Lớp 8
+                    </button>
+                    <button id="tab-scores" class="px-5 py-4 text-lg font-medium text-gray-600 focus:outline-none flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                        Xem Điểm
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="container mx-auto py-8 px-4 flex-grow">
+            <!-- Grade 6 Content -->
+            <div id="content-grade6" class="mb-12">
+                <div class="bg-blue-600 text-white rounded-lg p-5 mb-8">
+                    <h2 class="text-2xl font-bold">Lớp 6 - Bài Ôn Tập</h2>
+                    <p class="mt-1 text-blue-100">Tổng hợp các bài ôn tập trực tuyến dành cho học sinh lớp 6 (GS6LV1)</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Test Card 1 -->
+                    <div class="card bg-white rounded-lg overflow-hidden shadow">
+                        <div class="bg-blue-50 p-5 border-l-8 border-blue-600">
+                            <h3 class="text-2xl font-bold text-blue-800">GS6LV1 - Phần 1</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <p class="text-gray-700 font-medium">Bài ôn tập số 1 lớp 6</p>
+                                <p class="text-gray-500 text-sm mt-1">45 câu hỏi</p>
+                            </div>
+                            <div class="qr-code flex justify-center mb-5" id="qr-gs6lv1-1"></div>
+                            <a href="https://forms.gle/gs6lv1-1" target="_blank" class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg text-center transition duration-200">
+                                Mở Bài Ôn Tập
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Test Card 2 -->
+                    <div class="card bg-white rounded-lg overflow-hidden shadow">
+                        <div class="bg-blue-50 p-5 border-l-8 border-blue-600">
+                            <h3 class="text-2xl font-bold text-blue-800">GS6LV1 - Phần 2</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <p class="text-gray-700 font-medium">Bài ôn tập số 2 lớp 6</p>
+                                <p class="text-gray-500 text-sm mt-1">45 câu hỏi</p>
+                            </div>
+                            <div class="qr-code flex justify-center mb-5" id="qr-gs6lv1-2"></div>
+                            <a href="https://forms.gle/gs6lv1-2" target="_blank" class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg text-center transition duration-200">
+                                Mở Bài Ôn Tập
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Test Card 3 -->
+                    <div class="card bg-white rounded-lg overflow-hidden shadow">
+                        <div class="bg-blue-50 p-5 border-l-8 border-blue-600">
+                            <h3 class="text-2xl font-bold text-blue-800">GS6LV1 - Phần 3</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <p class="text-gray-700 font-medium">Bài ôn tập số 3 lớp 6</p>
+                                <p class="text-gray-500 text-sm mt-1">59 câu hỏi</p>
+                            </div>
+                            <div class="qr-code flex justify-center mb-5" id="qr-gs6lv1-3"></div>
+                            <a href="https://forms.gle/gs6lv1-3" target="_blank" class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg text-center transition duration-200">
+                                Mở Bài Ôn Tập
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grade 7 Content -->
+            <div id="content-grade7" class="hidden">
+                <div class="bg-green-600 text-white rounded-lg p-5 mb-8">
+                    <h2 class="text-2xl font-bold">Lớp 7 - Bài Ôn Tập</h2>
+                    <p class="mt-1 text-green-100">Tổng hợp các bài ôn tập trực tuyến dành cho học sinh lớp 7 (GS6LV2)</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Test Card 1 -->
+                    <div class="card bg-white rounded-lg overflow-hidden shadow">
+                        <div class="bg-green-50 p-5 border-l-8 border-green-600">
+                            <h3 class="text-2xl font-bold text-green-800">GS6LV2 - Phần 1</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <p class="text-gray-700 font-medium">Bài ôn tập số 1 lớp 7</p>
+                                <p class="text-gray-500 text-sm mt-1">45 câu hỏi</p>
+                            </div>
+                            <div class="qr-code flex justify-center mb-5" id="qr-gs6lv2-1"></div>
+                            <a href="https://forms.gle/gs6lv2-1" target="_blank" class="block w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg text-center transition duration-200">
+                                Mở Bài Ôn Tập
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Test Card 2 -->
+                    <div class="card bg-white rounded-lg overflow-hidden shadow">
+                        <div class="bg-green-50 p-5 border-l-8 border-green-600">
+                            <h3 class="text-2xl font-bold text-green-800">GS6LV2 - Phần 2</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <p class="text-gray-700 font-medium">Bài ôn tập số 2 lớp 7</p>
+                                <p class="text-gray-500 text-sm mt-1">45 câu hỏi</p>
+                            </div>
+                            <div class="qr-code flex justify-center mb-5" id="qr-gs6lv2-2"></div>
+                            <a href="https://forms.gle/gs6lv2-2" target="_blank" class="block w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg text-center transition duration-200">
+                                Mở Bài Ôn Tập
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Test Card 3 -->
+                    <div class="card bg-white rounded-lg overflow-hidden shadow">
+                        <div class="bg-green-50 p-5 border-l-8 border-green-600">
+                            <h3 class="text-2xl font-bold text-green-800">GS6LV2 - Phần 3</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <p class="text-gray-700 font-medium">Bài ôn tập số 3 lớp 7</p>
+                                <p class="text-gray-500 text-sm mt-1">45 câu hỏi</p>
+                            </div>
+                            <div class="qr-code flex justify-center mb-5" id="qr-gs6lv2-3"></div>
+                            <a href="https://forms.gle/gs6lv2-3" target="_blank" class="block w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg text-center transition duration-200">
+                                Mở Bài Ôn Tập
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Test Card 4 -->
+                    <div class="card bg-white rounded-lg overflow-hidden shadow">
+                        <div class="bg-green-50 p-5 border-l-8 border-green-600">
+                            <h3 class="text-2xl font-bold text-green-800">GS6LV2 - Phần 4</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <p class="text-gray-700 font-medium">Bài ôn tập số 4 lớp 7</p>
+                                <p class="text-gray-500 text-sm mt-1">45 câu hỏi</p>
+                            </div>
+                            <div class="qr-code flex justify-center mb-5" id="qr-gs6lv2-4"></div>
+                            <a href="https://forms.gle/gs6lv2-4" target="_blank" class="block w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg text-center transition duration-200">
+                                Mở Bài Ôn Tập
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Test Card 5 -->
+                    <div class="card bg-white rounded-lg overflow-hidden shadow">
+                        <div class="bg-green-50 p-5 border-l-8 border-green-600">
+                            <h3 class="text-2xl font-bold text-green-800">GS6LV2 - Phần 5</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <p class="text-gray-700 font-medium">Bài ôn tập số 5 lớp 7</p>
+                                <p class="text-gray-500 text-sm mt-1">33 câu hỏi</p>
+                            </div>
+                            <div class="qr-code flex justify-center mb-5" id="qr-gs6lv2-5"></div>
+                            <a href="https://forms.gle/gs6lv2-5" target="_blank" class="block w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg text-center transition duration-200">
+                                Mở Bài Ôn Tập
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grade 8 Content -->
+            <div id="content-grade8" class="hidden">
+                <div class="bg-amber-600 text-white rounded-lg p-5 mb-8">
+                    <h2 class="text-2xl font-bold">Lớp 8 - Bài Ôn Tập</h2>
+                    <p class="mt-1 text-amber-100">Tổng hợp các bài ôn tập trực tuyến dành cho học sinh lớp 8 (GS6LV3)</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Test Card 1 -->
+                    <div class="card bg-white rounded-lg overflow-hidden shadow">
+                        <div class="bg-amber-50 p-5 border-l-8 border-amber-600">
+                            <h3 class="text-2xl font-bold text-amber-800">GS6LV3 - Phần 1</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <p class="text-gray-700 font-medium">Bài ôn tập số 1 lớp 8</p>
+                                <p class="text-gray-500 text-sm mt-1">45 câu hỏi</p>
+                            </div>
+                            <div class="qr-code flex justify-center mb-5" id="qr-gs6lv3-1"></div>
+                            <a href="https://forms.gle/gs6lv3-1" target="_blank" class="block w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-4 rounded-lg text-center transition duration-200">
+                                Mở Bài Ôn Tập
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Test Card 2 -->
+                    <div class="card bg-white rounded-lg overflow-hidden shadow">
+                        <div class="bg-amber-50 p-5 border-l-8 border-amber-600">
+                            <h3 class="text-2xl font-bold text-amber-800">GS6LV3 - Phần 2</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <p class="text-gray-700 font-medium">Bài ôn tập số 2 lớp 8</p>
+                                <p class="text-gray-500 text-sm mt-1">45 câu hỏi</p>
+                            </div>
+                            <div class="qr-code flex justify-center mb-5" id="qr-gs6lv3-2"></div>
+                            <a href="https://forms.gle/gs6lv3-2" target="_blank" class="block w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-4 rounded-lg text-center transition duration-200">
+                                Mở Bài Ôn Tập
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Test Card 3 -->
+                    <div class="card bg-white rounded-lg overflow-hidden shadow">
+                        <div class="bg-amber-50 p-5 border-l-8 border-amber-600">
+                            <h3 class="text-2xl font-bold text-amber-800">GS6LV3 - Phần 3</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <p class="text-gray-700 font-medium">Bài ôn tập số 3 lớp 8</p>
+                                <p class="text-gray-500 text-sm mt-1">45 câu hỏi</p>
+                            </div>
+                            <div class="qr-code flex justify-center mb-5" id="qr-gs6lv3-3"></div>
+                            <a href="https://forms.gle/gs6lv3-3" target="_blank" class="block w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-4 rounded-lg text-center transition duration-200">
+                                Mở Bài Ôn Tập
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Test Card 4 -->
+                    <div class="card bg-white rounded-lg overflow-hidden shadow">
+                        <div class="bg-amber-50 p-5 border-l-8 border-amber-600">
+                            <h3 class="text-2xl font-bold text-amber-800">GS6LV3 - Phần 4</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <p class="text-gray-700 font-medium">Bài ôn tập số 4 lớp 8</p>
+                                <p class="text-gray-500 text-sm mt-1">45 câu hỏi</p>
+                            </div>
+                            <div class="qr-code flex justify-center mb-5" id="qr-gs6lv3-4"></div>
+                            <a href="https://forms.gle/gs6lv3-4" target="_blank" class="block w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-4 rounded-lg text-center transition duration-200">
+                                Mở Bài Ôn Tập
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Test Card 5 -->
+                    <div class="card bg-white rounded-lg overflow-hidden shadow">
+                        <div class="bg-amber-50 p-5 border-l-8 border-amber-600">
+                            <h3 class="text-2xl font-bold text-amber-800">GS6LV3 - Phần 5</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <p class="text-gray-700 font-medium">Bài ôn tập số 5 lớp 8</p>
+                                <p class="text-gray-500 text-sm mt-1">33 câu hỏi</p>
+                            </div>
+                            <div class="qr-code flex justify-center mb-5" id="qr-gs6lv3-5"></div>
+                            <a href="https://forms.gle/gs6lv3-5" target="_blank" class="block w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-4 rounded-lg text-center transition duration-200">
+                                Mở Bài Ôn Tập
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scores Content -->
+            <div id="content-scores" class="hidden">
+                <div class="bg-purple-600 text-white rounded-lg p-5 mb-8">
+                    <h2 class="text-2xl font-bold">Bảng Điểm</h2>
+                    <p class="mt-1 text-purple-100">Xem kết quả bài ôn tập của học sinh lớp 6, 7 và 8</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Grade 6 Scores Card -->
+                    <div class="card bg-white rounded-lg overflow-hidden shadow">
+                        <div class="bg-purple-50 p-5 border-l-8 border-purple-600">
+                            <h3 class="text-2xl font-bold text-purple-800">Điểm Lớp 6</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <p class="text-gray-700 font-medium">Bảng điểm các bài ôn tập lớp 6</p>
+                                <p class="text-gray-500 text-sm mt-1">Cập nhật sau mỗi bài ôn tập</p>
+                            </div>
+                            <div class="qr-code flex justify-center mb-5" id="qr-scores-grade6"></div>
+                            <a href="https://sheets.google.com/scores-grade6" target="_blank" class="block w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-4 rounded-lg text-center transition duration-200 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                                Xem Bảng Điểm Lớp 6
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Grade 7 Scores Card -->
+                    <div class="card bg-white rounded-lg overflow-hidden shadow">
+                        <div class="bg-purple-50 p-5 border-l-8 border-purple-600">
+                            <h3 class="text-2xl font-bold text-purple-800">Điểm Lớp 7</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <p class="text-gray-700 font-medium">Bảng điểm các bài ôn tập lớp 7</p>
+                                <p class="text-gray-500 text-sm mt-1">Cập nhật sau mỗi bài ôn tập</p>
+                            </div>
+                            <div class="qr-code flex justify-center mb-5" id="qr-scores-grade7"></div>
+                            <a href="https://sheets.google.com/scores-grade7" target="_blank" class="block w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-4 rounded-lg text-center transition duration-200 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                                Xem Bảng Điểm Lớp 7
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Grade 8 Scores Card -->
+                    <div class="card bg-white rounded-lg overflow-hidden shadow">
+                        <div class="bg-purple-50 p-5 border-l-8 border-purple-600">
+                            <h3 class="text-2xl font-bold text-purple-800">Điểm Lớp 8</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <p class="text-gray-700 font-medium">Bảng điểm các bài ôn tập lớp 8</p>
+                                <p class="text-gray-500 text-sm mt-1">Cập nhật sau mỗi bài ôn tập</p>
+                            </div>
+                            <div class="qr-code flex justify-center mb-5" id="qr-scores-grade8"></div>
+                            <a href="https://sheets.google.com/scores-grade8" target="_blank" class="block w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-4 rounded-lg text-center transition duration-200 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                                Xem Bảng Điểm Lớp 8
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-white rounded-lg p-6 shadow">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Hướng dẫn xem điểm</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center text-purple-800 font-bold mr-3">1</div>
+                            <p class="text-gray-700">Nhấp vào liên kết "Xem Bảng Điểm" tương ứng với lớp của bạn.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center text-purple-800 font-bold mr-3">2</div>
+                            <p class="text-gray-700">Tìm tên của bạn trong danh sách học sinh.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center text-purple-800 font-bold mr-3">3</div>
+                            <p class="text-gray-700">Xem điểm của từng bài ôn tập và tổng điểm.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center text-purple-800 font-bold mr-3">4</div>
+                            <p class="text-gray-700">Nếu không tìm thấy tên của bạn hoặc có thắc mắc về điểm số, vui lòng liên hệ với giáo viên.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-6 px-4 mt-auto">
+            <div class="container mx-auto text-center">
+                <p>&copy; 2023 Bài Ôn Tập Trực Tuyến. Tất cả các quyền được bảo lưu.</p>
+                <p class="mt-2 text-gray-400 text-sm">Quét mã QR hoặc nhấp vào liên kết để truy cập bài ôn tập</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        document.getElementById('tab-grade6').addEventListener('click', function() {
+            document.getElementById('content-grade6').classList.remove('hidden');
+            document.getElementById('content-grade7').classList.add('hidden');
+            document.getElementById('content-grade8').classList.add('hidden');
+            document.getElementById('content-scores').classList.add('hidden');
+            
+            document.getElementById('tab-grade6').classList.add('tab-active');
+            document.getElementById('tab-grade7').classList.remove('tab-active');
+            document.getElementById('tab-grade8').classList.remove('tab-active');
+            document.getElementById('tab-scores').classList.remove('tab-active');
+        });
+        
+        document.getElementById('tab-grade7').addEventListener('click', function() {
+            document.getElementById('content-grade6').classList.add('hidden');
+            document.getElementById('content-grade7').classList.remove('hidden');
+            document.getElementById('content-grade8').classList.add('hidden');
+            document.getElementById('content-scores').classList.add('hidden');
+            
+            document.getElementById('tab-grade6').classList.remove('tab-active');
+            document.getElementById('tab-grade7').classList.add('tab-active');
+            document.getElementById('tab-grade8').classList.remove('tab-active');
+            document.getElementById('tab-scores').classList.remove('tab-active');
+        });
+        
+        document.getElementById('tab-grade8').addEventListener('click', function() {
+            document.getElementById('content-grade6').classList.add('hidden');
+            document.getElementById('content-grade7').classList.add('hidden');
+            document.getElementById('content-grade8').classList.remove('hidden');
+            document.getElementById('content-scores').classList.add('hidden');
+            
+            document.getElementById('tab-grade6').classList.remove('tab-active');
+            document.getElementById('tab-grade7').classList.remove('tab-active');
+            document.getElementById('tab-grade8').classList.add('tab-active');
+            document.getElementById('tab-scores').classList.remove('tab-active');
+        });
+        
+        document.getElementById('tab-scores').addEventListener('click', function() {
+            document.getElementById('content-grade6').classList.add('hidden');
+            document.getElementById('content-grade7').classList.add('hidden');
+            document.getElementById('content-grade8').classList.add('hidden');
+            document.getElementById('content-scores').classList.remove('hidden');
+            
+            document.getElementById('tab-grade6').classList.remove('tab-active');
+            document.getElementById('tab-grade7').classList.remove('tab-active');
+            document.getElementById('tab-grade8').classList.remove('tab-active');
+            document.getElementById('tab-scores').classList.add('tab-active');
+        });
+        
+        // Generate QR codes when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Grade 6 QR codes
+            const grade6Links = [
+                'https://forms.gle/gs6lv1-1',
+                'https://forms.gle/gs6lv1-2',
+                'https://forms.gle/gs6lv1-3'
+            ];
+            
+            for (let i = 1; i <= grade6Links.length; i++) {
+                QRCode.toCanvas(document.getElementById('qr-gs6lv1-' + i), grade6Links[i-1], {
+                    width: 150,
+                    margin: 1,
+                    color: {
+                        dark: '#1e40af',  // Blue color for QR code
+                        light: '#FFFFFF'  // White background
+                    }
+                }, function(error) {
+                    if (error) console.error(error);
+                });
+            }
+            
+            // Grade 7 QR codes
+            const grade7Links = [
+                'https://forms.gle/gs6lv2-1',
+                'https://forms.gle/gs6lv2-2',
+                'https://forms.gle/gs6lv2-3',
+                'https://forms.gle/gs6lv2-4',
+                'https://forms.gle/gs6lv2-5'
+            ];
+            
+            for (let i = 1; i <= grade7Links.length; i++) {
+                QRCode.toCanvas(document.getElementById('qr-gs6lv2-' + i), grade7Links[i-1], {
+                    width: 150,
+                    margin: 1,
+                    color: {
+                        dark: '#166534',  // Green color for QR code
+                        light: '#FFFFFF'  // White background
+                    }
+                }, function(error) {
+                    if (error) console.error(error);
+                });
+            }
+            
+            // Grade 8 QR codes
+            const grade8Links = [
+                'https://forms.gle/gs6lv3-1',
+                'https://forms.gle/gs6lv3-2',
+                'https://forms.gle/gs6lv3-3',
+                'https://forms.gle/gs6lv3-4',
+                'https://forms.gle/gs6lv3-5'
+            ];
+            
+            for (let i = 1; i <= grade8Links.length; i++) {
+                QRCode.toCanvas(document.getElementById('qr-gs6lv3-' + i), grade8Links[i-1], {
+                    width: 150,
+                    margin: 1,
+                    color: {
+                        dark: '#92400e',  // Amber color for QR code
+                        light: '#FFFFFF'  // White background
+                    }
+                }, function(error) {
+                    if (error) console.error(error);
+                });
+            }
+            
+            // Score sheet QR codes
+            QRCode.toCanvas(document.getElementById('qr-scores-grade6'), 'https://sheets.google.com/scores-grade6', {
+                width: 150,
+                margin: 1,
+                color: {
+                    dark: '#7e22ce',  // Purple color for QR code
+                    light: '#FFFFFF'  // White background
+                }
+            }, function(error) {
+                if (error) console.error(error);
+            });
+            
+            QRCode.toCanvas(document.getElementById('qr-scores-grade7'), 'https://sheets.google.com/scores-grade7', {
+                width: 150,
+                margin: 1,
+                color: {
+                    dark: '#7e22ce',  // Purple color for QR code
+                    light: '#FFFFFF'  // White background
+                }
+            }, function(error) {
+                if (error) console.error(error);
+            });
+            
+            QRCode.toCanvas(document.getElementById('qr-scores-grade8'), 'https://sheets.google.com/scores-grade8', {
+                width: 150,
+                margin: 1,
+                color: {
+                    dark: '#7e22ce',  // Purple color for QR code
+                    light: '#FFFFFF'  // White background
+                }
+            }, function(error) {
+                if (error) console.error(error);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'94183a93e233a054',t:'MTc0NzUzODUzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
